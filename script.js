@@ -15,6 +15,18 @@ async function getAvailability() {
 
     console.log(data);
 
+    //console log desklist
+    for (let index in data) {
+        console.log(`found desk ${data[index].name}`);
+
+        //add desk name to page
+        const deskli = document.createElement('li');
+        deskli.textContent = `Desk ${data[index].name}`
+        const desklist = document.getElementById('desklist');
+        desklist.appendChild(deskli);
+    }
+
+
     // for every desk returned
     for (let index in data) {
 
@@ -22,7 +34,7 @@ async function getAvailability() {
         if (Object.keys(data[index].anonymousReservations).length > 0) {
 
             console.log(`Reservation(s) for desk ${data[index].name}:`)
-            
+
             // list out each reservation for the desk
             for (let reservationindex in data[index].anonymousReservations) {
                 
