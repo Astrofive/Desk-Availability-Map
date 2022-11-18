@@ -15,13 +15,14 @@ async function getAvailability() {
 
     console.log(data);
 
-    //console log desklist
+    // console log desklist
     for (let index in data) {
         console.log(`found desk ${data[index].name}`);
 
-        //add desk name to page
+        // add desk name to page
         const deskli = document.createElement('li');
         deskli.textContent = `Desk ${data[index].name}`
+        deskli.id = data[index].name;
         const desklist = document.getElementById('desklist');
         desklist.appendChild(deskli);
     }
@@ -30,15 +31,26 @@ async function getAvailability() {
     // for every desk returned
     for (let index in data) {
 
-        //if the desk's reservation list is greater than 0, AKA has any reservations
+        // if the desk's reservation list is greater than 0, AKA has any reservations
         if (Object.keys(data[index].anonymousReservations).length > 0) {
 
-            console.log(`Reservation(s) for desk ${data[index].name}:`)
+            console.log(`Reservation(s) for desk ${data[index].name} found`);
+            const deskReservations = data[index].anonymousReservations;
 
-            // list out each reservation for the desk
-            for (let reservationindex in data[index].anonymousReservations) {
-                
-                console.log(data[index].anonymousReservations[reservationindex]);
+            // list out each reservation for the desk and whether it's CURRENTLY reserved 
+            for (let reservationindex in deskReservations) {
+                console.log(data[index].anonymousReservations[reservationindex]); 
+
+                const startTime = deskReservations[reservationindex].startDate;
+                const endTime = deskReservations[reservationindex].endDate;
+                const currenttime = Date.now();
+
+                // determine if we're in the middle of this reservation
+                if ((startTime < currenttime) && (endTime > currenttime)) {
+                    console.log(`This reservation is currently ongoing`)
+                } else {
+                    console.log(`This reservation is currently not ongoing`)
+                }
             }
         }
       }
