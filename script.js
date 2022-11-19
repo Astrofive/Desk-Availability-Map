@@ -58,6 +58,7 @@ async function getAvailability(floorid) {
             console.log(`Reservation(s) for desk ${data[index].name} found`);
             const deskReservations = data[index].anonymousReservations;
             let currentlyReserved = false;
+            let reservedSoon = false;
 
             // list out each reservation for the desk and whether it's CURRENTLY reserved 
             for (let reservationindex in deskReservations) {
@@ -65,22 +66,31 @@ async function getAvailability(floorid) {
 
                 const startTime = deskReservations[reservationindex].startDate;
                 const endTime = deskReservations[reservationindex].endDate;
-                const currenttime = Date.now();
+                const currentTime = Date.now();
 
                 // determine if we're in the middle of this reservation
-                if ((startTime < currenttime) && (endTime > currenttime)) {
+                if ((startTime < currentTime) && (endTime > currentTime)) {
                     console.log(`This reservation is currently ongoing`);
                     currentlyReserved = true;
+                } else if ((currentTime < startTime) && (startTime < (currentTime + (2*3600000)))) {
+                    console.log(`This reservation starts in the next 2 hours`)
+                    reservedSoon = true;
                 } else {
                     console.log(`This reservation is currently not ongoing`);
                 }
             }
-            if (currentlyReserved == true){
+            if (currentlyReserved){
                 document.getElementById(`${deskName}`).classList.add('red');
-            } else {
+            } else if (reservedSoon){
                 document.getElementById(`${deskName}`).classList.add('yellow');
+            } else {
+
+                //reservation found but not in the next 2 hours, we consider this green
+                document.getElementById(`${deskName}`).classList.add('green');
             }
         } else {
+
+            //if no reservations found
             document.getElementById(`${deskName}`).classList.add('green');
         }
       }
