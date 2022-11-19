@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desk Availability Map</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
     <script src="apipassword.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -13,10 +16,24 @@
 </head>
 <body>
     <div id="container1">
-        <h3>Which KPR desks are currently reservable?</h3>
-        <p>Desk list:</p>
-        <ul id="desklist">
-        </ul>
+        <div id="container2">
+            <h3>Which desks are currently reservable?</h3>
+
+            <form>
+                <li>
+                    <label for="testruns">FloorID:</label>
+                    <input type="number" id="floorid" name="floorid" value="1459">
+                </li>
+            </form>
+            <button id="run">Go!</button>
+            <div class="legend">
+                <p><span class="available-no-reservations-today">Green</span> = available today</p>
+                <p><span class="available-reservation-at-other-time-today">Yellow</span> = currently available, but other reservation exists today</p>
+                <p><span class="unavailable">Red</span> = currently reserved</p>
+            </div>
+            <p id="buildingInfoText"></p>
+            <ul id="desklist"></ul>
+        </div>
     </div>
 </body>
 </html>

@@ -1,3 +1,7 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
 body {
     background-color: rgb(46, 46, 46);
     color: rgb(209, 209, 209);
@@ -10,16 +14,48 @@ body {
     margin-top: 100px;
 }
 
+input[type=number] {
+    border-radius: 14px;
+    border: #4b4b4b 2px solid;
+    padding: 5px 12px;
+    min-width: 100px;
+}
+
+button {
+    border: none;
+    border-radius: 15px;
+    background-color: #2e47ee;
+    font-size: 26px;
+    padding: 15px 50px;
+    margin: 30px 0px;
+    cursor: pointer;
+    color: white;
+}
+button:hover {
+    background-color: #4a61f7;
+    box-shadow: 0px 0px 20px 0px rgb(116 143 238 / 18%);
+}
+
+#buildingInfoText {
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-top: 60px;
+}
+
 
 ul {
     padding-inline-start: 0;
 }
-ul > li {
+li {
     list-style-type: none;
 }
 
-.available {
+.available-no-reservations-today {
     color: green;
+}
+
+.available-reservation-at-other-time-today {
+    color: yellow;
 }
 
 .unavailable {
