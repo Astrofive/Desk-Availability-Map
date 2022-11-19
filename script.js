@@ -76,12 +76,12 @@ async function getAvailability(floorid) {
                 }
             }
             if (currentlyReserved == true){
-                document.getElementById(`${deskName}`).classList.add('unavailable');
+                document.getElementById(`${deskName}`).classList.add('red');
             } else {
-                document.getElementById(`${deskName}`).classList.add('available-reservation-at-other-time-today');
+                document.getElementById(`${deskName}`).classList.add('yellow');
             }
         } else {
-            document.getElementById(`${deskName}`).classList.add('available-no-reservations-today');
+            document.getElementById(`${deskName}`).classList.add('green');
         }
       }
 

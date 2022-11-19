@@ -71,14 +71,14 @@ li {
     list-style-type: none;
 }
 
-.available-no-reservations-today {
+.green {
     color: green;
 }
 
-.available-reservation-at-other-time-today {
+.yellow {
     color: yellow;
 }
 
-.unavailable {
+.red {
     color: red;
 }
