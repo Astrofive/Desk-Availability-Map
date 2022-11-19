@@ -7,6 +7,10 @@ body {
     color: rgb(209, 209, 209);
 }
 
+.title {
+    font-size: 2rem;
+}
+
 #container1 {
     display: flex;
     flex-direction: column;
@@ -19,6 +23,18 @@ input[type=number] {
     border: #4b4b4b 2px solid;
     padding: 5px 12px;
     min-width: 100px;
+}
+
+#suggestions {
+    font-style: italic;
+    color: gray;
+    margin: 15px 0px;
+}
+#suggestions > p {
+    margin: 5px 0px;
+}
+#suggestions > p > span{
+    font-weight: bold;
 }
 
 button {
@@ -36,20 +52,15 @@ button:hover {
     box-shadow: 0px 0px 20px 0px rgb(116 143 238 / 18%);
 }
 
-#suggestions {
-    font-style: italic;
-    color: gray;
-    margin: 15px 0px;
-}
-#suggestions > p {
-    margin: 5px 0px;
+.legend{
+    margin-bottom: 30px;
 }
 
 
 #buildingInfoText {
     font-weight: bold;
     font-size: 1.5em;
-    margin-top: 60px;
+    margin-top: 30px;
 }
 
 

@@ -95,6 +95,7 @@ goButton.addEventListener('click', () => {
     while (desklist.firstChild) {
         desklist.removeChild(desklist.firstChild);
     }
+    document.getElementById('buildingInfoText').textContent = '';
 
     const floorid = document.getElementById('floorid').value;
     getAvailability(floorid);
